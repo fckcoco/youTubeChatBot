@@ -16,3 +16,7 @@ Nodejs, Npm
 ## 使用
 - ```node server.js```
 - 前往浏览器打开http://localhost:12000
+- **Authorize**登录你想发聊天的账号
+- **Get Active Chat**获取*蝗直播间聊天室id
+- **Start ChatBot** 开冲！
+- **Stop ChatBot** 停止复读，并保存聊天历史至```chat_{timestamp}.log```可供分析使用
