@@ -1,4 +1,5 @@
 const express = require('express');
+const { chat } = require('googleapis/build/src/apis/chat');
 const path = require('path');
 
 const youtubeService = require('./youtubeService.js');
@@ -19,10 +20,10 @@ server.get('/callback', (req, response) => {
   response.redirect('/');
 });
 
-server.get('/init-active-chat/:channelId', (req, res) => {
+server.get('/init-active-chat/:channelId', async (req, res) => {
   let channelId = req.params.channelId
-  youtubeService.findActiveChat(channelId);
-  res.redirect('/');
+  let chatId = await youtubeService.findActiveChat(channelId);
+  res.redirect(chatId.found ? 200 : 404, '/');
 });
 
 server.get('/start-chat-bot', (req, res) => {
